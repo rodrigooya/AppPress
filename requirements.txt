@@ -1,1 +1,5 @@
 fastapi[all]
+pyjwt
+passlib
+mongopy
+python-multiport
