@@ -1,4 +1,4 @@
 fastapi[all]
 pyjwt
 passlib
-mongopy
+pymongo
