@@ -2,4 +2,4 @@ fastapi[all]
 pyjwt
 passlib
 pymongo
-dotenv
+python-dotenv
