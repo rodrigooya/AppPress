@@ -1,9 +1,14 @@
+import os
 from fastapi import FastAPI
 from dotenv import dotenv_values
+from dotenv import load_dotenv
+
+load_dotenv()
 from db.client import db_client
 from routers import users_db, products,jwt_auth_users
 
-config = dotenv_values(".env")
+#config = dotenv_values(".env")
+DB_NAME = os.getenv("DB_NAME")
 
 app = FastAPI()
 #routers
@@ -16,7 +21,7 @@ app.include_router(users_db.router)
 @app.on_event("startup")
 def startup_db_client():
     app.mongodb_client = db_client
-    app.database = app.mongodb_client[config["DB_NAME"]]
+    app.database = app.mongodb_client[DB_NAME]
     print("Connected to the MongoDB database!")
 
 @app.on_event("shutdown")
